@@ -1,17 +1,23 @@
 {
   "name": "ember-i18n-loader",
   "version": "0.0.0",
-  "description": "The default blueprint for ember-cli addons.",
+  "description": "Ember Service to lazy load the ember-i18n translations Edit",
   "keywords": [
-    "ember-addon"
+    "ember-addon",
+    "ember-i18n-lazy-load",
+    "ember-i18n-load-on-demand"
   ],
   "license": "MIT",
-  "author": "",
+  "author": "Vivek Munde",
   "directories": {
     "doc": "doc",
     "test": "tests"
   },
-  "repository": "",
+  "homepage": "https://github.com/vivekmunde/ember-i18n-loader",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/vivekmunde/ember-i18n-loader.git"
+  },
   "scripts": {
     "build": "ember build",
     "start": "ember server",
