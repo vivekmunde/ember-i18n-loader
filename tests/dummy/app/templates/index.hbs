@@ -1,0 +1,175 @@
+<h2 class="text-center">Read Me</h2>
+<br>
+<article class="markdown-body entry-content" itemprop="text">
+    <p>This <a href="https://emberjs.com">Ember.js</a> addon offers a wrapper service <code>i18n-loader</code> on top of the
+        <a href="https://github.com/jamesarosen/ember-i18n">ember-i18n</a> addon to load the translation on demand or live
+        using the <a href="http://api.jquery.com/jquery.ajax/">jQuery AJAX</a>. It extends the sample code available at
+        <a
+            href="https://github.com/jamesarosen/ember-i18n/wiki/Example:-Fetching-Translations-Live">ember-i18n:Fetching-Translations-Live</a>.</p>
+    <h3>
+        <a id="user-content-loading-translations-on-demand" class="anchor" href="#loading-translations-on-demand" aria-hidden="true">
+            <svg aria-hidden="true" class="octicon octicon-link" height="16" version="1.1" viewBox="0 0 16 16" width="16">
+                <path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path>
+            </svg>
+        </a>Loading translations on demand</h3>
+    <p>Multilingual large scale apps do not require to load translations for all supported languages as the app uses only one
+        language at a time. In some cases, the complete set of translations for one language can be a heavy load task for
+        initial load, as only current/initial screen/route translations are necessary, which can cause more delays on app
+        load time. So its preferable to load the translations for only one language or in chunks (for single language) as
+        they are required.</p>
+    <p>The translations can be loaded in the <code>beforeModel()</code> hook of the respective routes.</p>
+    <pre><code>i18nLoader: Ember.inject.service('i18n-loader'),
+beforeModel() {
+  return this.get('i18nLoader).load('locales/en/translations.json');
+}
+</code></pre>
+    <h3>
+        <a id="user-content-demo--ember-i18n-loader-demo" class="anchor" href="#demo--ember-i18n-loader-demo" aria-hidden="true">
+            <svg aria-hidden="true" class="octicon octicon-link" height="16" version="1.1" viewBox="0 0 16 16" width="16">
+                <path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path>
+            </svg>
+        </a>Demo @ <a href="https://github.com/vivekmunde/ember-i18n-loader-demo">ember-i18n-loader-demo</a></h3>
+    <h2>
+        <a id="user-content-loadajaxsettings" class="anchor" href="#loadajaxsettings" aria-hidden="true">
+            <svg aria-hidden="true" class="octicon octicon-link" height="16" version="1.1" viewBox="0 0 16 16" width="16">
+                <path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path>
+            </svg>
+        </a>.load(ajaxSettings)</h2>
+    <p><code>i18n-loader</code> service exposes a method <code>load(ajaxSettings)</code> to load the translations.</p>
+    <h4>
+        <a id="user-content-ajaxsettings" class="anchor" href="#ajaxsettings" aria-hidden="true">
+            <svg aria-hidden="true" class="octicon octicon-link" height="16" version="1.1" viewBox="0 0 16 16" width="16">
+                <path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path>
+            </svg>
+        </a><strong><code>ajaxSettings</code></strong></h4>
+    <p>A JSON object holding the AJAX settings for the i18n resource. This object must have at least <code>url</code> property
+        set pointing to the location of i18n resource. The JSON object passed gets merged into the default AJAX settings
+        and therefore the default AJAX settings can be overridden.</p>
+    <p>Default AJAX settings which can be overridden:</p>
+    <pre><code>{
+  cache: true,
+  dataType: 'json',
+  type: 'GET'
+}
+</code></pre>
+    <p>The caller can pass:</p>
+    <pre><code>{
+  url: '/locales/en/translations.json',
+  headers: {
+    "Authorization": "bearer aXVmZ2hpdzg3eWZ1ZndmdWdiNDU1c29pdmpic29nNDU2NGZzYmVpZmhzaWY2NnVzZGhiaWpzaGI0NTZmdWdo"
+  }
+}
+</code></pre>
+    <h4>
+        <a id="user-content-promise-based-response" class="anchor" href="#promise-based-response" aria-hidden="true">
+            <svg aria-hidden="true" class="octicon octicon-link" height="16" version="1.1" viewBox="0 0 16 16" width="16">
+                <path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path>
+            </svg>
+        </a><strong>Promise Based Response</strong></h4>
+    <p>The service <code>i18n-loader</code> returns a promise, which gets resolved if the translations are loaded successfully
+        otherwise rejected on any error.</p>
+    <h4>
+        <a id="user-content-caching" class="anchor" href="#caching" aria-hidden="true">
+            <svg aria-hidden="true" class="octicon octicon-link" height="16" version="1.1" viewBox="0 0 16 16" width="16">
+                <path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path>
+            </svg>
+        </a><strong>Caching</strong></h4>
+    <p>The service <code>i18n-loader</code> remembers the translation urls to avoid loading the same translations for consequent
+        requests for same url. Note: The service does not remember the translations key already loaded, instead it remembers
+        the urls of the translation files like <code>/locales/en/abc.route.translations.json</code>.</p>
+    <h2>
+        <a id="user-content-example" class="anchor" href="#example" aria-hidden="true">
+            <svg aria-hidden="true" class="octicon octicon-link" height="16" version="1.1" viewBox="0 0 16 16" width="16">
+                <path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path>
+            </svg>
+        </a>Example</h2>
+    <p>The locales are stored under the <code>public/locales</code> directory of the app.</p>
+    <pre><code>public
+|__locales
+   |__de
+      |__translations.json
+   |__en
+      |__translations.json	
+   |__fr
+      |__translations.json
+</code></pre>
+    <p>Or further dividing them into smaller chunks.</p>
+    <pre><code>public
+|__locales
+   |__de
+      |__common.translations.json
+      |__product-management.translations.json
+      |__user-administration.translations.json
+   |__en
+      |__common.translations.json
+      |__product-management.translations.json
+      |__user-administration.translations.json
+   |__fr
+      |__common.translations.json
+      |__product-management.translations.json
+      |__user-administration.translations.json
+</code></pre>
+    <p>The app can detect users's expected language in the application route and loads the translations.</p>
+    <p><em>routes/application.js</em></p>
+    <pre><code>i18n: Ember.inject.service(),
+i18nLoader: Ember.inject.service('i18n-loader'),
+beforeModel() {
+  // find the locale
+  const locale = navigator.language;
+  // set the i18n locale
+  this.set('i18n.locale', locale);
+  // load translations
+  return this.get('i18nLoader').load(`/locales/${locale}/translations.json`);
+}
+</code></pre>
+    <h2>
+        <a id="user-content-caution" class="anchor" href="#caution" aria-hidden="true">
+            <svg aria-hidden="true" class="octicon octicon-link" height="16" version="1.1" viewBox="0 0 16 16" width="16">
+                <path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path>
+            </svg>
+        </a>Caution</h2>
+    <p><strong>AJAX Approach</strong>: Browsers do not allow cross domain resource downloads through AJAX unless the server
+        allows the requests through <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Access_control_CORS">CORS</a>        settings.</p>
+    <h2>
+        <a id="user-content-installation" class="anchor" href="#installation" aria-hidden="true">
+            <svg aria-hidden="true" class="octicon octicon-link" height="16" version="1.1" viewBox="0 0 16 16" width="16">
+                <path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path>
+            </svg>
+        </a>Installation</h2>
+    <ul>
+        <li><code>git clone &lt;repository-url&gt;</code> this repository</li>
+        <li><code>cd ember-i18n-loader</code></li>
+        <li><code>npm install</code></li>
+    </ul>
+    <h2>
+        <a id="user-content-running" class="anchor" href="#running" aria-hidden="true">
+            <svg aria-hidden="true" class="octicon octicon-link" height="16" version="1.1" viewBox="0 0 16 16" width="16">
+                <path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path>
+            </svg>
+        </a>Running</h2>
+    <ul>
+        <li><code>ember serve</code></li>
+        <li>Visit your app at <a href="http://localhost:4200">http://localhost:4200</a>.</li>
+    </ul>
+    <h2>
+        <a id="user-content-running-tests" class="anchor" href="#running-tests" aria-hidden="true">
+            <svg aria-hidden="true" class="octicon octicon-link" height="16" version="1.1" viewBox="0 0 16 16" width="16">
+                <path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path>
+            </svg>
+        </a>Running Tests</h2>
+    <ul>
+        <li><code>npm test</code> (Runs <code>ember try:each</code> to test your addon against multiple Ember versions)</li>
+        <li><code>ember test</code></li>
+        <li><code>ember test --server</code></li>
+    </ul>
+    <h2>
+        <a id="user-content-building" class="anchor" href="#building" aria-hidden="true">
+            <svg aria-hidden="true" class="octicon octicon-link" height="16" version="1.1" viewBox="0 0 16 16" width="16">
+                <path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path>
+            </svg>
+        </a>Building</h2>
+    <ul>
+        <li><code>ember build</code></li>
+    </ul>
+    <p>For more information on using ember-cli, visit <a href="https://ember-cli.com/">https://ember-cli.com/</a>.</p>
+</article>
