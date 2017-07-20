@@ -1,6 +1,6 @@
 {
   "name": "ember-i18n-loader",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "description": "Ember Service to lazy load the ember-i18n translations Edit",
   "keywords": [
     "ember-addon",
